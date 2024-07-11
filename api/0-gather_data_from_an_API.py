@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """ api project task 0 """
 
-import requests
+import json
+import urllib.request
+import sys
 
 base_url = "https://jsonplaceholder.typicode.com/"
 
@@ -27,10 +29,8 @@ base_url = "https://jsonplaceholder.typicode.com/"
 #    * If an employee has no task, just display the first line:
 #        * Employee EMPLOYEE_NAME has no tasks
 
+
 if __name__ == "__main__":
-    import sys
-    import urllib.request
-    import json
 
     if len(sys.argv) > 1:
         employee_id = int(sys.argv[1])
