@@ -2,6 +2,7 @@
 """ api project task 1 """
 
 import base64
+import codecs
 import json
 import os
 import requests
@@ -18,7 +19,8 @@ def upload_file_to_github(file_path,
                           token):
     url = "https://api.github.com/repos/"
     url += f"{repo_owner}/{repo_name}/contents/{file_path}"
-    with open(file_path, "r") as file:
+    with codecs.open(file_path, 'r', encoding='utf-8') as file:
+    # with open(file_path, "r") as file:
         file_content = file.read()
     file_content_base64 = base64.b64encode(file_content.encode()).decode()
     headers = {
