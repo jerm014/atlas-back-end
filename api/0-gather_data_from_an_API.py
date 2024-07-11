@@ -36,8 +36,8 @@ if __name__ == "__main__":
         employee_id = int(sys.argv[1])
         url = base_url + "users/{}".format(employee_id)
         with urllib.request.urlopen(url) as response:
-            user_data = response.read().decode("utf-8")
-        user = eval(user_data)
+            user_data = response.read()
+        user = json.loads(user_data)
         employee_name = user["name"]
 
         url = base_url + "todos?userId={}".format(employee_id)
