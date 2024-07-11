@@ -2,8 +2,8 @@
 """ api project task 0 """
 
 import json
-import urllib.request
 import sys
+import urllib.request
 
 base_url = "https://jsonplaceholder.typicode.com/"
 
