@@ -53,7 +53,7 @@ if __name__ == "__main__":
         print("Employee {} is done with tasks({}/{}):".format(
             employee_name, completed_tasks_count, total_tasks))
 
-        for task in completed_tasks:
+        for task in completed:
             print("\t {}".format(task))
     else:
         print("Please provide an employee ID as a command-line argument.")
