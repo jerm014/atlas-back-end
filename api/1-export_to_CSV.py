@@ -33,7 +33,7 @@ if __name__ == "__main__":
                 f'"{employee_name}",' + \
                 f'"{completed}",' + \
                 f'"{title}"\n'
-        
+
         #  write the out to a file named employee_id.csv
         with open(f"{employee_id}.csv", "w") as f:
             f.write(out)
