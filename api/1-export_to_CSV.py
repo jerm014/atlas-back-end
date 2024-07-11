@@ -18,7 +18,7 @@ if __name__ == "__main__":
         with urllib.request.urlopen(url) as response:
             user_data = response.read()
         user = json.loads(user_data)
-        employee_name = user["name"]
+        employee_name = user["username"]
 
         url = base_url + "todos?userId={}".format(employee_id)
         with urllib.request.urlopen(url) as response:
