@@ -46,9 +46,9 @@ if __name__ == "__main__":
         #  parse and load JSON from todos_data into todos
         todos = json.loads(todos_data)
 
-        completed_tasks = [todo["title"] for todo in todos if todo["completed"]]
+        completed = [todo["title"] for todo in todos if todo["completed"]]
         total_tasks = len(todos)
-        completed_tasks_count = len(completed_tasks)
+        completed_tasks_count = len(completed)
 
         print("Employee {} is done with tasks({}/{}):".format(
             employee_name, completed_tasks_count, total_tasks))
