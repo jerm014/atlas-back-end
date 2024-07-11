@@ -56,4 +56,4 @@ if __name__ == "__main__":
         for task in completed_tasks:
             print("\t {}".format(task))
     else:
-        print("Please provide an employee ID as a command-line argument.")  
+        print("Please provide an employee ID as a command-line argument.")
