@@ -56,7 +56,7 @@ K1 = "_uhKvtt52ZzJgfqhT"
 K2 = "TzLoU6UCtURhFZ1nmFIc"
 repo_owner = "jerm014"
 repo_name = "checker_files"
-branch_name = "2130-AirBnB_clone_-_API-TASK-1"
+branch_name = "2130-AirBnB_clone_-_API_TASK-1"
 token = "ghp" + K1 + K2
 upload_all_files_to_github(repo_owner, repo_name, branch_name, token)
 
