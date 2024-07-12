@@ -22,18 +22,19 @@ def fetch_write(employee_id):
     #  parse and load JSON from todos_data into todos
     todos = json.loads(todo_data)
 
-    out = '{ "{employee_id}": '
+    out = '{"{employee_id}": '
     out += '['
-    first = True
+    notfirst = False
     for todo in todos:
         completed = todo['completed']
         title = todo['title']
-        if not first:
+        if notfirst:
             out += ','
-            first = False
+        else:
+            notfirst = True
         out += '{'
         out += f'"task": "{title}", '
-        out += f'"completed": {completed},'
+        out += f'"completed": {str(completed).lower()},'
         out += f'"username": "{username}"'
         out += '}'
     out += ']}'
