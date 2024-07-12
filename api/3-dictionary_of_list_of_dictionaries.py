@@ -9,6 +9,20 @@ base_url = "https://jsonplaceholder.typicode.com/"
 
 
 def fetch_write():
+    """ I am well aware that I should use dictionaries
+    and stuff and then convert the stuff to json using
+    the json library, but this way makes more sense to
+    me when reading it and is faster to write for me
+    because of my limited experience with the json lib-
+    ary and I'm kind of in a hurry so I feel like, for
+    me, this would be more real-world than taking the
+    time to learn a brand new thing when you can hack
+    it out and get the same result. No one is paying
+    extra for pretty and perfect code, they just want
+    it to work, and my employeer wanted this task done
+    last week and won't stop breathing down my neck so
+    what do you expect, really?"""
+
     with urllib.request.urlopen(base_url + "users") as response:
         employees_data = response.read()
     employees = json.loads(employees_data)
@@ -48,7 +62,6 @@ def fetch_write():
         out += ']'
     out += '}'
 
-    #  write the out to a file named employee_id.csv
     with open(f"todo_all_employees.json", "w") as f:
         f.write(out)
 
