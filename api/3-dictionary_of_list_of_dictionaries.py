@@ -66,5 +66,32 @@ def fetch_write():
         f.write(out)
 
 
+def do_it_with_github():
+    """ trying this task again with github typicode data """
+    base_url = "https://raw.githubusercontent.com/typicode/" + \
+        "jsonplaceholder/master/data.json"
+    with urllib.request.urlopen(base_url) as response:
+        data = response.read()
+    data = json.loads(data)
+
+    out = {}
+    for user in data["users"]:
+        user_id = user["id"]
+        out[user_id] = []
+        for task in data["todos"]:
+            if task["userId"] != user_id:
+                continue
+            task_dict = {}
+            task_dict["task"] = task["title"]
+            task_dict["completed"] = task["completed"]
+            task_dict["username"] = user["username"]
+            out[user_id].append(task_dict)
+
+    out = json.dumps(out, indent=4)
+
+    with open(f"todo_all_employees.json", "w") as f:
+        f.write(out)
+
+
 if __name__ == "__main__":
-    fetch_write()
+    do_it_with_github()
