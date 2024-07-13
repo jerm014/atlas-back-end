@@ -31,7 +31,9 @@ def fetch_write(empoyee_id):
 
     with open(f"{user['id']}.csv", "w") as csvfile:
         fieldnames = ["user_id", "username", "completed", "title"]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+        writer = csv.DictWriter(csvfile,
+                                fieldnames=fieldnames,
+                                quoting=csv.QUOTE_ALL)
 
         for todo in todos_out:
             writer.writerow(todo)
