@@ -46,6 +46,7 @@ def do_it_with_github():
     out = {}
     for user in data["users"]:
         user_id = user["id"]
+        tasks = []
         for task in data["todos"]:
             if task["userId"] != user_id:
                 continue
@@ -53,7 +54,8 @@ def do_it_with_github():
             task_dict["task"] = task["title"]
             task_dict["completed"] = task["completed"]
             task_dict["username"] = user["username"]
-            out[user_id].append(task_dict)
+            tasks.append(task_dict)
+        out[user_id] = tasks
 
     out = json.dumps(out, indent=4)
 
@@ -62,4 +64,4 @@ def do_it_with_github():
 
 
 if __name__ == "__main__":
-    fetch_write()
+    do_it_with_github()
