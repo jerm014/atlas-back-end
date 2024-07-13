@@ -13,27 +13,24 @@ def fetch_write():
     out = {}
 
     with urllib.request.urlopen(base_url + "users") as response:
-        employees_data = response.read()
-    employees = json.loads(employees_data)
+        users = json.loads(response.read())
     with urllib.request.urlopen(base_url + "todos") as response:
-        todo_data = response.read()
-    todos = json.loads(todo_data)
+        todos = json.loads(response.read())
 
-    for employee in employees:
-        employee_id = employee["id"]
-        employee_username = employee["username"]
+    for user in users:
+        user_id = user["id"]
+        user_username = user["username"]
 
         tasks = []
         for todo in todos:
-            if todo['userId'] != employee_id:
+            if todo['userId'] != user_id:
                 continue
             task = {}
             task['task'] = todo['title']
             task['completed'] = todo['completed']
-            task['title'] = todo['title']
-            task['username'] = employee_username
+            task['username'] = user_username
             tasks.append(task)
-        out[employee_id] = tasks
+        out[user_id] = tasks
 
     with open(f"todo_all_employees.json", "w") as f:
         json.dump(out, f)
@@ -49,7 +46,6 @@ def do_it_with_github():
     out = {}
     for user in data["users"]:
         user_id = user["id"]
-        out[user_id] = []
         for task in data["todos"]:
             if task["userId"] != user_id:
                 continue
