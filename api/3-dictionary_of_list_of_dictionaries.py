@@ -67,4 +67,4 @@ def do_it_with_github():
 
 
 if __name__ == "__main__":
-    do_it_with_github()
+    fetch_write()
