@@ -44,8 +44,7 @@ def do_it_with_github():
     base_url = "https://raw.githubusercontent.com/typicode/" + \
         "jsonplaceholder/master/data.json"
     with urllib.request.urlopen(base_url) as response:
-        data = response.read()
-    data = json.loads(data)
+        data = json.loads(response.read())
 
     out = {}
     for user in data["users"]:
