@@ -8,6 +8,7 @@ import urllib.request
 
 
 base_url = "https://jsonplaceholder.typicode.com/"
+fieldnames = ["user_id", "username", "completed", "title"]
 
 
 def fetch_write(empoyee_id):
@@ -23,14 +24,13 @@ def fetch_write(empoyee_id):
     todos_out = []
     for todo in todos:
         task = {}
-        task["user_id"] = user["id"]
-        task["username"] = user["username"]
-        task["completed"] = todo["completed"]
-        task["title"] = todo["title"]
+        task[fieldnames[0]] = user["id"]
+        task[fieldnames[1]] = user["username"]
+        task[fieldnames[2]] = todo["completed"]
+        task[fieldnames[3]] = todo["title"]
         todos_out.append(task)
 
     with open(f"{user['id']}.csv", "w") as csvfile:
-        fieldnames = ["user_id", "username", "completed", "title"]
         writer = csv.DictWriter(csvfile,
                                 fieldnames=fieldnames,
                                 quoting=csv.QUOTE_ALL)
