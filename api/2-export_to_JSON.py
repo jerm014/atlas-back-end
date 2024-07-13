@@ -10,6 +10,7 @@ base_url = "https://jsonplaceholder.typicode.com/"
 
 
 def fetch_write(employee_id):
+    """ make the thing happen """
     url = base_url + "users/{}".format(employee_id)
     with urllib.request.urlopen(url) as response:
         user_data = response.read()
